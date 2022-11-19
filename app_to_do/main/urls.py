@@ -21,6 +21,7 @@ urlpatterns = [
     path('utilitiesColor/', views.UtilitiesColorView.as_view(), name="utilitiesColor"),
     path('utilitiesOther/', views.UtilitiesOtherView.as_view(), name="utilitiesOther"),
     
+	path('logout/', views.logoutUser, name="logout"),
 ]
 
     

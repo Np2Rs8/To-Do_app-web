@@ -1,4 +1,6 @@
 from django.views import generic
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
 
 class ErrorView(generic.TemplateView):
 	template_name = "main/404.html"
@@ -42,3 +44,9 @@ class UtilitiesColorView(generic.TemplateView):
 class UtilitiesOtherView(generic.TemplateView):
 	template_name = "main/utilities-other.html"
 
+
+
+
+def logoutUser(request):
+	logout(request)
+	return redirect('main:login')
