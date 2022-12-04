@@ -25,6 +25,8 @@ urlpatterns = [
     path('utilitiesColor/', views.UtilitiesColorView.as_view(), name="utilitiesColor"),
     path('utilitiesOther/', views.UtilitiesOtherView.as_view(), name="utilitiesOther"),
     
+    path('creacionTareas/', login_required(views.CreationTareasView.as_view()), name="creacionTareas"),
+
 	path('logout/', views.LogoutUserView, name="logout"),
 ]
 

@@ -4,7 +4,11 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.contrib import messages
 
-from . forms import CreateUserForm
+from . forms import CreateUserForm, TaskForm
+
+from .models import (
+	TaskModel,
+)
 
 
 class ErrorView(generic.TemplateView):
@@ -83,5 +87,26 @@ def RegisterView(request):
 
 		context = {'form':form}
 		return render(request, 'main/register.html', context)
-
 		
+
+class CreationTareasView(generic.FormView):
+	template_name = "main/creacionTareas.html"
+	form_class = TaskForm
+
+
+	success_url = "../creacionTareas"
+	
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		
+		lista_tareas = TaskModel.objects.all()
+		
+		context["lista_tareas"] = lista_tareas
+		return context
+
+	def form_valid(self, form):
+		
+		form.save()
+		messages.success(self.request, 'Se creó de forma exitosa.')
+		return super().form_valid(form)
+
