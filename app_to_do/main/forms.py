@@ -15,6 +15,8 @@ class CreateUserForm(UserCreationForm):
 
 class TaskForm(forms.ModelForm):
 
+	id_usuario = User.id
+	
 	titulo = forms.CharField(max_length=100, required=True,
 		widget=forms.TextInput(attrs={
 			'class': 'form-control',
@@ -50,5 +52,5 @@ class TaskForm(forms.ModelForm):
 	class Meta:
 		
 		model = TaskModel
-		fields = ('titulo', 'descripcion', 'estado', 'cuerpo')
+		fields = ('id_usuario', 'titulo', 'descripcion', 'estado', 'cuerpo')
 

@@ -10,6 +10,7 @@ class TaskModel(models.Model):
         verbose_name = 'Task_list'
         ordering = ["timestamp"]
     timestamp = models.DateTimeField(auto_now_add=True)
+    id_usuario = models.CharField(max_length=25, blank=True, null=True)
     titulo = models.CharField(max_length=254, blank=True, null=True)
     descripcion = models.CharField(max_length=1000, blank=True, null=True)
     estado = models.CharField(max_length=50, default="Incompleto")
